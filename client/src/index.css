@@ -498,22 +498,33 @@ body {
 
 .result-fields {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
+  grid-template-columns: 1fr;
+  gap: 8px;
 }
 
 .result-field {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 178, 44, 0.15);
   border-radius: var(--radius-md);
-  padding: 14px 16px;
+  padding: 12px 16px;
   display: flex;
-  flex-direction: column;
-  gap: 4px;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
 }
 
 .result-field.full {
   grid-column: 1 / -1;
+}
+
+.result-field.address-field {
+  align-items: flex-start;
+}
+
+.address-field .field-value {
+  text-align: right;
+  max-width: 75%;
+  line-height: 1.5;
 }
 
 .field-label {
@@ -534,6 +545,17 @@ body {
   color: rgba(247, 247, 247, 0.3);
   font-style: italic;
   font-size: 13px;
+}
+
+.ocr-text {
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-height: 180px;
+  overflow-y: auto;
+  color: rgba(247, 247, 247, 0.85);
+  line-height: 1.6;
 }
 
 .reset-btn {
