@@ -1,16 +1,24 @@
-# React + Vite
+# Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React 19 and Vite application for uploading both sides of an Aadhaar card and displaying the OCR result. The production site is [aadhaar-image-to-text.vercel.app](https://aadhaar-image-to-text.vercel.app/).
 
-Currently, two official plugins are available:
+## Local development
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```sh
+npm install
+npm run dev
+```
 
-## React Compiler
+The Vite app calls `http://localhost:5000/api` in development. Start the backend on port 5000 in a second terminal (see [`server/README.md`](../server/README.md)). Upload both images in JPG, PNG, or WEBP format; the API limit is 5 MB per image.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Checks and production build
 
-## Expanding the ESLint configuration
+```sh
+npm run lint
+npm run build
+npm run preview
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+The frontend is deployed on Vercel with `client` as the project root, `npm run build` as the build command, and `dist` as the output directory. Production API requests currently target `https://aadhaar-ocr-system-9xhg.onrender.com/api`; update `src/api/ocrApi.js` if the Render URL changes.
+
+See the [root README](../README.md) for full setup, API, and deployment documentation.
