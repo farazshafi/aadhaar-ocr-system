@@ -2,6 +2,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import cors from "cors"
+import { router } from "./routes/ocrRouter.js"
 
 // config
 dotenv.config()
@@ -15,12 +16,13 @@ app.use(cors())
 app.use(express.json())
 
 // router
+app.use("/api/ocr", router)
 
-app.get("/",(req,res)=>{
-    res.json({message: "Aadhaar OCR API is running"})
+app.get("/", (req, res) => {
+    res.json({ message: "Aadhaar OCR API is running" })
 })
 
-app.listen(PORT,()=>{
+app.listen(PORT, () => {
     console.log(`Server is running on Port ${PORT},`)
     console.log(`Server Api running at http://localhost:${PORT}`)
 })
