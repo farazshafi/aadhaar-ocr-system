@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 import Navbar from './components/Navbar'
@@ -6,7 +6,8 @@ import UploadPanel from './components/UploadPanel'
 import InfoPanel from './components/InfoPanel'
 import ResultPanel from './components/ResultPanel'
 
-import { extractAadhaarData } from './api/ocrApi'
+import { extractAadhaarData, startBackendApi } from './api/ocrApi'
+import axios from 'axios'
 
 function App() {
   const [frontFile, setFrontFile] = useState(null)
@@ -51,6 +52,10 @@ function App() {
     setOcrData(null);
     setError("");
   };
+
+  useEffect(() => {
+    startBackendApi()
+  }, [])
 
   return (
     <div className="page">
