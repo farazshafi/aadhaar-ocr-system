@@ -1,15 +1,15 @@
 # Aadhaar OCR System
 
-A web app that accepts images of both sides of an Aadhaar card and uses Tesseract.js OCR to extract fields such as name, date of birth, gender, Aadhaar number, and address.
+A web app that accepts images of both sides of an Aadhaar card and uses the `aadhaar-image-to-text` Node.js package to extract fields such as name, date of birth, gender, Aadhaar number, and address.
 
 - **Live frontend:** [aadhaar-image-to-text.vercel.app](https://aadhaar-image-to-text.vercel.app/)
 - **Hosting:** React/Vite frontend on Vercel; Express API on Render.
-- **Repository layout:** `client/` contains the frontend and `server/` contains the API and OCR logic.
+- **Repository layout:** `client/` contains the frontend and `server/` contains the API. OCR and field extraction are provided by the standalone `aadhaar-image-to-text` package.
 
 ## Requirements
 
 - Node.js 20 or later and npm.
-- Internet access the first time the OCR engine runs if Tesseract.js needs to fetch language data. The server also includes `server/eng.traineddata`.
+- Internet access the first time the OCR engine runs if Tesseract.js needs to fetch English language data.
 
 ## Local setup
 
@@ -121,8 +121,8 @@ Each image must be 5 MB or smaller. A successful response contains `success: tru
 - `client/src/api/ocrApi.js` — API endpoint selection and upload request.
 - `server/server.js` — Express app and API route mounting.
 - `server/routes/ocrRouter.js` — multipart upload validation and limits.
-- `server/controller/ocrController.js` — OCR processing and response.
-- `server/utils/extractAadhaar.js` — structured field extraction.
+- `server/controller/ocrController.js` — delegates OCR to `aadhaar-image-to-text` and returns the API response.
+- `D:\projects\Mechine tasks\aadhaar-image-to-text` — standalone npm package source used by the server after publication.
 - `server/utils/extractAadhaar.test.js` — extraction checks.
 
 ## Privacy
