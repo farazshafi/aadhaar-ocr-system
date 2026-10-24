@@ -1,6 +1,6 @@
 # Backend API
 
-Express service that accepts Aadhaar card images, runs OCR with Tesseract.js, and extracts structured fields. The service is hosted on Render.
+Express service that accepts Aadhaar card images and uses the `aadhaar-image-to-text` package for OCR and structured field extraction. The service is hosted on Render.
 
 ## Local setup
 
@@ -34,6 +34,6 @@ The test uses representative OCR results; it does not call the HTTP endpoint or 
 
 ## Render deployment
 
-Configure the Render Web Service with root directory `server`, build command `npm install`, and start command `npm start`. Render provides the `PORT` variable automatically. Keep `eng.traineddata` in the server directory; it is included in this repository for the OCR engine. The frontend's production API base URL is currently `https://aadhaar-ocr-system-9xhg.onrender.com/api`.
+Configure the Render Web Service with root directory `server`, build command `npm install`, and start command `npm start`. Render provides the `PORT` variable automatically. The frontend's production API base URL is currently `https://aadhaar-ocr-system-9xhg.onrender.com/api`.
 
 See the [root README](../README.md) for full project documentation.
